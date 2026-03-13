@@ -18,10 +18,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScaffoldDefaults.contentWindowInsets
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -67,6 +70,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Navigate() {
     val backStack = remember { mutableStateListOf<Any>(Screen.GameList)}
+    val recherche = remember { mutableStateOf("") } // recherche = une var qui va contenir le texte tapé dans la recherche, valeur modifiable qui commence vide
 
     NavDisplay(
         backStack = backStack,
@@ -80,7 +84,22 @@ fun Navigate() {
                                 containerColor = Color(0xFF9FDDE6),
                                 titleContentColor = Color.Black,
                             ),
-                            title = { Text("My Games List") }
+                            title = {
+                                TextField(
+                                    value = recherche.value,    // affiche texte actuel
+                                    onValueChange = { newText ->    // màj de recherche quand on tape
+                                        recherche.value = newText
+                                    },
+                                    placeholder = { Text("Rechercher un jeu") },    // texte gris qd c vide
+                                    singleLine = true,
+                                    colors = TextFieldDefaults.colors(
+                                        focusedContainerColor = Color.Transparent,
+                                        unfocusedContainerColor = Color.Transparent,
+                                        focusedIndicatorColor = Color.Transparent,
+                                        unfocusedIndicatorColor = Color.Transparent
+                                    )
+                                )
+                            }
                         )
                     },
                     contentWindowInsets = WindowInsets.systemBars,
@@ -88,6 +107,7 @@ fun Navigate() {
                 ) { innerPadding ->
                         GameList(
                             innerPadding,
+                            recherche.value,
                             { gameId -> backStack.add(Screen.GameDetail(gameId))}
                         )
                     }
