@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,12 +17,15 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -48,17 +52,45 @@ fun GameDetails(identifiant: Long, pad: PaddingValues) {
     ) {
 
         //NOM DU JEU
-        Spacer(modifier = Modifier.height(20.dp))   // espace vide
-        game1?.name?.let {  // si le nom existe
-            Text(
-                it, // nom du jeu
-                modifier = Modifier.fillMaxWidth(),
-                fontSize = 35.sp,   // taille du texte
-                fontWeight = FontWeight.Bold,   // gras
-                textDecoration = TextDecoration.Underline,  // Souligné
-                textAlign = TextAlign.Center    // centré
-            )
+        Spacer(modifier = Modifier.height(25.dp))   // espace vide
+
+        val isFavorite = Favorite.isFav(identifiant)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            game1?.name?.let {  // si le nom existe
+                Text(
+                    it, // nom du jeu
+                    fontSize = 25.sp,   // taille du texte
+                    fontWeight = FontWeight.Bold,   // gras
+                    textDecoration = TextDecoration.Underline,  // Souligné
+                    textAlign = TextAlign.Center ,   // centré
+                    modifier = Modifier.weight(1f)
+
+                )
+            }
+
+            IconButton(
+                onClick = {
+                    Favorite.basculerFav(identifiant)
+                }
+            ) {
+                Icon(
+                    painter = if(isFavorite){
+                        painterResource(R.drawable.filled_star)
+                    } else {
+                        painterResource(R.drawable.outlined_star)
+                    },
+                    contentDescription = if (isFavorite) "Retirer des favoris" else "Ajouter aux favoris",
+                    tint = if (isFavorite) Color(0xFFFFA500) else Color.Gray
+
+
+                    )
+            }
         }
+
 
         // COVER DU JEU
         Spacer(modifier = Modifier.height(20.dp))
