@@ -72,7 +72,7 @@ fun GameDetails(identifiant: Long, pad: PaddingValues) {
         )
 
         // GENRE DU JEU
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         val genres1 = game1?.genres
         var stringGenres = ""
         if (genres1 != null) {
@@ -91,6 +91,7 @@ fun GameDetails(identifiant: Long, pad: PaddingValues) {
             color = Color.Gray,
             modifier = Modifier.fillMaxWidth()
         )
+        Spacer(modifier = Modifier.height(16.dp))
 
         // LAZY ROW : LOGOS DES PLATEFORMES
 
