@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
+import com.insa.mygameslist.data.IGDB.games
 
 @Composable
 fun GameDetails(gameId: Long, innerPadding: PaddingValues) {
@@ -18,6 +19,6 @@ fun GameDetails(gameId: Long, innerPadding: PaddingValues) {
             .padding(innerPadding),
         contentAlignment = Alignment.Center
     ) {
-        Text("Game ID : $gameId", fontSize=24.sp)
+        Text("Game ID: $gameId", fontSize = 24.sp)
     }
 }
