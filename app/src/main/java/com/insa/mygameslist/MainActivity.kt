@@ -121,8 +121,8 @@ fun Navigate() {
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     GameDetails(
-                        gameId = key.id,
-                        innerPadding = innerPadding
+                        key.id,
+                        innerPadding
                     )
                 }
             }

@@ -28,7 +28,7 @@ object IGDB {
         )
         val platformLogosFromJson: List<PlatformLogo> = Gson().fromJson(
             context.resources.openRawResource(R.raw.platform_logos).bufferedReader(),
-            object : TypeToken<List<Cover>>() {}.type
+            object : TypeToken<List<PlatformLogo>>() {}.type
         )
         val platformFromJson: List<Platform> = Gson().fromJson(
             context.resources.openRawResource(R.raw.platforms).bufferedReader(),
