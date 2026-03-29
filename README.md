@@ -20,7 +20,7 @@ Une application Android pour gérer sa collection de jeux vidéo
 </div>
 
 ## Fonctionnalités implémentées
-Les TP obligatoires ont été complétés
+Les TP obligatoires ont été complétés.
 Concernant les bonus :
 * Accessibilité : couleurs contrastées, ajout de descriptions (contentDescription), modifier semantics sur les objets cliquables
 * Croix dans la barre de recherche pour effacer le texte écrit jusque là
