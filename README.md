@@ -33,9 +33,9 @@ app/src/main/java/com/insa/mygameslist/
     |- navigation.kt            # Configuration navigation
     |- persistenceButton.kt     # Logique du bouton favoris
     |- SearchBar.kt             # Barre de recherche avec filtrage
-|-- ui.theme/
+|ui.theme/
     |- [fichiers de thème (Color.kt, Theme.kt, Type.kt)]
-|-- MainActivity.kt             # Point d'entrée + scaffolds
+|MainActivity.kt             # Point d'entrée + scaffolds
 ``` 
 
 ## Sources et documentation
