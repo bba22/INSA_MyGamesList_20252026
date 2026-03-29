@@ -8,15 +8,11 @@ Une application Android pour gérer sa collection de jeux vidéo
 
 <div align="center">
 
-#### Liste des jeux
+#### Liste des jeux & Détails d'un jeu
+
 <img src="screenshots/liste.png" width="300"/>
-
----
-
-#### Détails d'un jeu
 <img src="screenshots/details.png" width="300"/>
 
----
 </div>
 
 ## Fonctionnalités implémentées
